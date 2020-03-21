@@ -1,0 +1,23 @@
+{
+  "name": "kcapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChanceYoung/BuildingAnAPI.git"
+  },
+  "author": "chance young",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChanceYoung/BuildingAnAPI/issues"
+  },
+  "homepage": "https://github.com/ChanceYoung/BuildingAnAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
