@@ -25,6 +25,12 @@ var mysqlrepository = {
         var rows = await con.execute('SELECT * FROM HOUSE');
         con.end()
         return rows;
+    },
+    DeleteHouse: async function(house){
+        const con = await this.getConnection();
+        var rows = await con.execute('DELETE FROM HOUSE WHERE ID = ?',[house.id])
+        con.end();
+        return rows;
     }
 
 }

@@ -1,18 +1,33 @@
 const mysqlrepository = require('../repositories/mysqlrepository');
+const House = require("../models/house")
 
 var houseservice = {
     CreateHouse: async function(house) {
         await mysqlrepository.CreateHouse(house);
     },
     GetAllHouses: async function(){
-        var rows = await mysqlrepository.GetAllHouses();\
-        console.log(rows[0])
-        if(typeof rows[0][0] != 'undefined'){
-
-        }else{
-            console.log(rows[0])
+        var DatabaseResultList = await mysqlrepository.GetAllHouses();
+        var HouseList = []
+        //console.log(DatabaseResultList[0])
+        for(let i = 0; i<DatabaseResultList[0].length; i++){
+            let house = await this.DatabaseResultToHouse(DatabaseResultList[0][i]);
+            HouseList.push(house)
         }
+        return HouseList;
+    },
+    DeleteHouse: async function(house){
+       await mysqlrepository.DeleteHouse(house);
 
+    },
+    DatabaseResultToHouse:async function(DatabaseResult){
+        console.log(DatabaseResult)
+        let house = new House(DatabaseResult["ID"],
+                              DatabaseResult["BEDROOMS"],
+                              DatabaseResult["BATHROOMS"],
+                              DatabaseResult["FLOORS"],
+                              DatabaseResult["SQUAREFEET"],
+                              DatabaseResult["HOMENAME"])
+        return house
     }
 }
 

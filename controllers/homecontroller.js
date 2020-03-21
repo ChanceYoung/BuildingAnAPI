@@ -1,4 +1,6 @@
 const houseservice = require('../services/houseservice')
+const House = require("../models/house")
+
 
 var homecontroller = {
     GetRoot: function(req,res){
@@ -7,15 +9,30 @@ var homecontroller = {
         res.end()
     },
     PostAddHouse: async function(req,res){
-        house = req.body.house
+        req.body.house.id = null;
+        let house = this.reqBodyToHouse(req);
         await houseservice.CreateHouse(house);
-        res.write(JSON.stringify("kyler"))
+        res.write(JSON.stringify({status: "Success"}))
         res.end()
     },
     GetAllHouses: async function(req, res){
         var houses = await houseservice.GetAllHouses();
-        res.write(JSON.stringify("ahhhh"))
+        res.write(JSON.stringify(houses))
         res.end()
+    },
+    PostDeleteHouse: async function(req, res){
+        let house = this.reqBodyToHouse(req);
+        await houseservice.DeleteHouse(house);
+        res.write(JSON.stringify({status: "Success"}))
+        res.end()
+    },
+    reqBodyToHouse(req){
+        let house = new House(req.body.house.id,req.body.house.bedrooms,
+            req.body.house.bathrooms,
+            req.body.house.floors,
+            req.body.house.squarefeet,
+            req.body.house.homename)
+        return house;
     }
 }
 

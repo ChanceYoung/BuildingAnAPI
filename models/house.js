@@ -1,10 +1,6 @@
 class House{
-    bedrooms
-    bathrooms
-    floors
-    squarefeet
-    housename
-    constructor(bedrooms,bathrooms,floors,squarefeet,homename){
+    constructor(id,bedrooms,bathrooms,floors,squarefeet,homename){
+            this.id = id;
             this.bedrooms = bedrooms;
             this.bathrooms = bathrooms;
             this.floors = floors;
@@ -12,3 +8,5 @@ class House{
             this.homename = homename;
         }
 }
+
+module.exports = House;
