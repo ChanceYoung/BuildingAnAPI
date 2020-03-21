@@ -15,6 +15,10 @@ var houseservice = {
         }
         return HouseList;
     },
+    UpdateHouse: async function(house)
+    {
+        await mysqlrepository.UpdateHouse(house);
+    },
     DeleteHouse: async function(house){
        await mysqlrepository.DeleteHouse(house);
 

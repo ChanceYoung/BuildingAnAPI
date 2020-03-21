@@ -26,6 +26,12 @@ var mysqlrepository = {
         con.end()
         return rows;
     },
+    UpdateHouse: async function(house){
+        const con = await this.getConnection();
+        var rows = await con.execute(' UPDATE HOUSE SET BEDROOMS = ?,BATHROOMS = ?,FLOORS = ?,SQUAREFEET=?,HOMENAME=?  WHERE ID = ?',[house.bedrooms,house.bathrooms,house.floors,house.squarefeet,house.homename,house.id])
+        con.end();
+        return rows;
+    },
     DeleteHouse: async function(house){
         const con = await this.getConnection();
         var rows = await con.execute('DELETE FROM HOUSE WHERE ID = ?',[house.id])

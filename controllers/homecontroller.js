@@ -20,6 +20,12 @@ var homecontroller = {
         res.write(JSON.stringify(houses))
         res.end()
     },
+    PostUpdateHouse: async function(req,res){
+        let house = this.reqBodyToHouse(req);
+        await houseservice.UpdateHouse(house);
+        res.write(JSON.stringify({status: "Success"}))
+        res.end()
+    },
     PostDeleteHouse: async function(req, res){
         let house = this.reqBodyToHouse(req);
         await houseservice.DeleteHouse(house);
