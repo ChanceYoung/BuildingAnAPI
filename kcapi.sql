@@ -11,4 +11,4 @@ create TABLE HOUSE(
     SQUAREFEET int NOT NULL,
     HOMENAME varchar(250) UNIQUE,
     PRIMARY KEY (ID)
-)
+);

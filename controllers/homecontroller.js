@@ -3,6 +3,7 @@ var homecontroller = {
         let hello = {string:"Hello World"}
         res.write(JSON.stringify(hello))
         res.end()
+        console.log(process.env.DB_DATABASE)
     }
 }
 

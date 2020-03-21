@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+require('dotenv').config()
 var homecontroller = require("./controllers/homecontroller");
 
 app.get('/',(req,res)=>homecontroller.GetRoot(req,res))
