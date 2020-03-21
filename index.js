@@ -1,12 +1,8 @@
 var express = require('express');
 var app = express();
+var homecontroller = require("./controllers/homecontroller");
 
-
-app.get('/', function(req, res){
-    let hello = {string:"Hello World"}
-    res.write(JSON.stringify(hello))
-    res.end()
-})
+app.get('/',(req,res)=>homecontroller.GetRoot(req,res))
 
 
 var server = app.listen(80, function(){
